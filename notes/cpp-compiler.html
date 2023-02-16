@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="atari-monk">
+  <meta name="description" content="Tutorial page of my tech wiki.">
+  <title>Tech Wiki Web Page</title>
+  <link rel="icon" href="../src/img/html5.png" type="image/x-icon">
+  <link rel="stylesheet" href="../src/css/main.css" type="text/css">
+  <script src="../src/js/tutorial.js"></script>
+</head>
+
+<body>
+  <header>
+    <h1 class="title">Install C++ compiler</h1>
+
+    <nav aria-label="primary-navigation">
+      <ul>
+        <li>
+          <a href="#source">Source</a>
+        </li>
+        <li>
+          <a href="#desc">Description</a>
+        </li>
+        <li>
+          <a href="#prerequisites">Prerequisites/Assumptions</a>
+        </li>
+        <li>
+          <a href="#tutorial">Tutorial</a>
+        </li>
+        <li>
+          <a href="#summary">Summary</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <hr />
+  <main>
+    <article id="source">
+      <h2>Source</h2>
+      <section>
+        <ul>
+          <li>
+            <a href="https://www.freecodecamp.org/news/how-to-install-c-and-cpp-compiler-on-windows/">Source
+              tutorial</a>
+          </li>
+          <li>
+            <a href="https://www.msys2.org/">MSYS2</a>
+          </li>
+        </ul>
+      </section>
+    </article>
+    <article id="desc">
+      <h2>Description</h2>
+      <section>
+        <p>
+          How to install c++ compiler on windows.
+        </p>
+      </section>
+    </article>
+    <article id="prerequisites">
+      <h2>Prerequisites/Assumptions</h2>
+      <section>
+        <ol>
+          <li>
+            None.
+          </li>
+        </ol>
+      </section>
+    </article>
+    <article id="tutorial">
+      <h2>Tutorial</h2>
+      <section>
+        <ol>
+          <li>
+            <p>
+              Download MSYS2 cli. Link in Source.
+            </p>
+            <p>
+            </p>
+          </li>
+          <li>
+            <p>
+              Choose intallation folder. Finish install wizard.
+            </p>
+            <aside>
+              <details>
+                <summary>details</summary>
+                <p><mark class="">Choose your own installation folder path</mark></p>
+              </details>
+            </aside>
+            <p>
+              <button onclick="Copy('code2')">Copy</button>
+              <code id='code2'>
+                                C:\atari-monk\Apps\msys64
+                            </code>
+              <br>
+            </p>
+          </li>
+          <li>
+            <p>
+              In windows, search for this cli.
+            </p>
+            <p>
+              <button onclick="Copy('code3')">Copy</button>
+              <code id='code3'>
+                                MSYS2 MSYS
+                            </code>
+              <br>
+            </p>
+          </li>
+          <li>
+            <p>
+              Run cmd to update the base packages. Type 'y' on prompts. Close.
+            </p>
+            <p>
+              <button onclick="Copy('code4')">Copy</button>
+              <code id='code4'>
+                                pacman -Syu
+                            </code>
+              <br>
+            </p>
+          </li>
+          <li>
+            <p>
+              Open MSYS2 MSYS cli second time. Update packages.
+            </p>
+            <p>
+              <button onclick="Copy('code5')">Copy</button>
+              <code id='code5'>
+                                pacman -Su
+                            </code>
+              <br>
+            </p>
+          </li>
+          <li>
+            <p>
+              skipped many steps for now, update from source... to install compiler and debuger
+            </p>
+            <p>
+            </p>
+          </li>
+          <li>
+            <p>
+              To set Environment Variables (how system finds exe), Open this dialog in windows
+            </p>
+            <aside>
+              <details>
+                <summary>details</summary>
+                <p><mark class="">Text to search config dialog in windows</mark></p>
+              </details>
+            </aside>
+            <p>
+              <button onclick="Copy('code6')">Copy</button>
+              <code id='code6'>
+                                View Advanced System Settings
+                            </code>
+              <br>
+            </p>
+          </li>
+          <li>
+            <p>
+              Click Environment Variables button, Path, add or edit path to compiler.
+            </p>
+            <aside>
+              <details>
+                <summary>details</summary>
+                <p><mark class="">Choose your own path to compiler</mark></p>
+              </details>
+            </aside>
+            <p>
+              <button onclick="Copy('code7')">Copy</button>
+              <code id='code7'>
+                                C:\atari-monk\Apps\msys64\mingw64\bin
+                            </code>
+              <br>
+            </p>
+          </li>
+          <li>
+            <p>
+              Restart all instances of powershell for envirenmental vars to go in effect
+            </p>
+            <p>
+            </p>
+          </li>
+          <li>
+            <p>
+              Make sure VSCode make extensions have correct path to make in setting.json (acces it thrue
+              extensions wiget)
+            </p>
+            <p>
+            </p>
+          </li>
+          <li>
+            <p>
+              Note on freeglut. To add it to compiler libs use bellow comand in msys2
+            </p>
+            <aside>
+              <details>
+                <summary>details</summary>
+                <p><mark class="">msys2 freeglut install command</mark></p>
+              </details>
+            </aside>
+            <p>
+              <button onclick="Copy('code8')">Copy</button>
+              <code id='code8'>
+                                pacman -S mingw-w64-x86_64-freeglut
+                            </code>
+              <br>
+            </p>
+          </li>
+        </ol>
+      </section>
+    </article>
+    <article id="summary">
+      <h2>Summary</h2>
+      <Summary>
+        I use this c++ compiler with makefile generated form panda ide.<br>
+        This is for my old c++ projects with glut.<br>
+        I refactored archive app.<br>
+        It uses freeglut.
+      </Summary>
+    </article>
+  </main>
+  <hr />
+  <footer>
+    <p>
+      &lt;&lt;&lt; <a href="https://github.com/atari-monk">atari-monk</a> &gt;&gt;&gt;
+    </p>
+    <p>
+      <a href="#">Back to Top</a>
+    </p>
+  </footer>
+</body>
+
+</html>

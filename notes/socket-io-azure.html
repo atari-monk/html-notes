@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="atari-monk">
+  <meta name="description" content="Tutorial page of my tech wiki.">
+  <title>Tech Wiki Web Page</title>
+  <link rel="icon" href="../src/img/html5.png" type="image/x-icon">
+  <link rel="stylesheet" href="../src/css/main.css" type="text/css">
+  <script src="../src/js/tutorial.js"></script>
+</head>
+
+<body>
+  <header>
+    <h1 class="title">Socket.IO template Azure deploy</h1>
+    <nav aria-label="primary-navigation">
+      <ul>
+        <li class="list-point">
+          <a href="#source">Source</a>
+        </li class="list-point">
+        <li class="list-point">
+          <a href="#desc">Description</a>
+        </li class="list-point">
+        <li class="list-point">
+          <a href="#prerequisites">Prerequisites/Assumptions</a>
+        </li class="list-point">
+        <li class="list-point">
+          <a href="#tutorial">Tutorial</a>
+        </li class="list-point">
+        <li class="list-point">
+          <a href="#summary">Summary</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <hr />
+  <main>
+    <article id="source">
+      <h2>Source</h2>
+      <section class="list-point">
+        <ol>
+          <li class="list-point">
+            <a href="https://theargylemvp.com/2021/08/21/deploying-socket-io-to-azure-web-app/">Source tutorial</a>
+          </li>
+          <li class="list-point">
+            <a href="https://socket.io/get-started/chat">Official get started</a>
+          </li>
+        </ol>
+      </section>
+    </article>
+    <article id="desc">
+      <h2>Description</h2>
+      <section>
+        <p>
+          &emsp;Socket.IO enables bidirectional communication between (Node.js) server and (Browser/Node.js) client.<br>
+          It's most popular on the web for this.<br>
+          &emsp;Official get started combines server and client under one namespace. I tested it locally.<br>
+          When i deploy on azure cloud, i prefer them separated, so i used Source tutorial.<br>
+          Code in repo <a href="https://github.com/atari-monk/socket-io-qs">socket-io-qs</a>.
+        </p>
+      </section>
+    </article>
+    <article id="prerequisites">
+      <h2>Prerequisites/Assumptions</h2>
+      <section>
+        <ol>
+          <li class="list-point">Install <a href="https://code.visualstudio.com/">VSCode</a></li>
+          <li class="list-point">Install <a href="https://nodejs.org/en/">Node.js</a></li>
+        </ol>
+      </section>
+    </article>
+    <article id="tutorial">
+      <h2>Tutorial</h2>
+      <section>
+        <ol>
+          <li>
+            <p>
+              Setup project. In git bash or VSCode terminal.
+            </p>
+            <p>
+              <button onclick="Copy('code1')">Copy</button>
+              <code id='code1'>
+                                    cd chat-server
+                                </code>
+              <br>
+              <button onclick="Copy('code2')">Copy</button>
+              <code id='code2'>
+                                    npm init
+                                </code>
+              <br>
+              <button onclick="Copy('code3')">Copy</button>
+              <code id='code3'>
+                                    npm install socket.io
+                                </code>
+              <br>
+              <button onclick="Copy('code4')">Copy</button>
+              <code id='code4'>
+                                    npm install express
+                                </code>
+              <br>
+            </p>
+          </li>
+          <li>
+            <p>
+              To .gitignore add (if not there)
+            </p>
+            <p>
+              <button onclick="Copy('code5')">Copy</button>
+              <code id='code5'>
+                                    node_modules
+                                </code>
+              <br>
+              <button onclick="Copy('code6')">Copy</button>
+              <code id='code6'>
+                                    .vscode
+                                </code>
+              <br>
+            </p>
+          </li>
+          <li>
+            <p>
+              Add index.js with server code.
+            </p>
+            <p>
+            </p>
+          </li>
+          <li>
+            <p>
+              Run it locally. Ctrl+C to kill it.
+            </p>
+            <p>
+              <button onclick="Copy('code7')">Copy</button>
+              <code id='code7'>
+                                    node index.js
+                                </code>
+              <br>
+            </p>
+          </li>
+          <li>
+            <p>
+              Add folder chat-client.
+            </p>
+            <p>
+            </p>
+          </li>
+          <li>
+            <p>
+              Add index.html with chat client code.
+            </p>
+            <p>
+            </p>
+          </li>
+          <li>
+            <p>
+              With live server extension, open two instances of chat client page.
+            </p>
+            <p>
+            </p>
+          </li>
+          <li>
+            <p>
+              Open git bash in chat-server folder and run server.
+            </p>
+            <p>
+              <button onclick="Copy('code8')">Copy</button>
+              <code id='code8'>
+                                    node index.js
+                                </code>
+              <br>
+            </p>
+          </li>
+          <li>
+            <p>
+              Send message with one client. Check if it was recive by server and send to another clinet.
+            </p>
+            <p>
+            </p>
+          </li>
+          <li>
+            <p>
+              Deploy to Azure.
+            </p>
+            <p>
+            </p>
+          </li>
+          <li>
+            <p>
+              VSCode Azure extension. App Services. Create New Web App.
+            </p>
+            <aside>
+              <details>
+                <summary>details</summary>
+                <p><mark class="mark-name">example name</mark></p>
+              </details>
+            </aside>
+            <p>
+              <button onclick="Copy('code9')">Copy</button>
+              <code id='code9'>
+                                    atari-monk-chat-server
+                                </code>
+              <br>
+            </p>
+          </li>
+          <li>
+            <p>
+              Right click on chat-server, Deploy to Web App... .
+            </p>
+            <p>
+            </p>
+          </li>
+          <li>
+            <p>
+              Choose web app name and assign folder to it in popup.
+            </p>
+            <p>
+            </p>
+          </li>
+          <li>
+            <p>
+              After server is deployed. Deploy client page with github pages.
+            </p>
+            <p>
+            </p>
+          </li>
+          <li>
+            <p>
+              Test it.
+            </p>
+            <p>
+            </p>
+          </li>
+        </ol>
+      </section>
+    </article>
+    <article id="summary">
+      <h2>Summary</h2>
+      <summary>
+        Quite powerfull and easy to use framework.
+      </summary>
+    </article>
+  </main>
+  <hr />
+  <footer>
+    <p>
+      &lt;&lt;&lt;
+      <a href="https://github.com/atari-monk">atari-monk</a>
+      &gt;&gt;&gt;
+    </p>
+    <p>
+      <a href="#">Back to Top</a>
+    </p>
+  </footer>
+</body>
+
+</html>

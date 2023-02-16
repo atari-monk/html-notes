@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="atari-monk">
+  <meta name="description" content="Tutorial page of my tech wiki.">
+  <title>Tech Wiki Web Page</title>
+  <link rel="icon" href="../src/img/html5.png" type="image/x-icon">
+  <link rel="stylesheet" href="../src/css/main.css" type="text/css">
+  <script src="../src/js/tutorial.js"></script>
+</head>
+
+<body>
+  <header>
+    <h1 class="title">Connect SSMS to Azure SQL Database</h1>
+    <nav aria-label="primary-navigation">
+      <ul>
+        <li>
+          <a href="#source">Source</a>
+        </li>
+        <li>
+          <a href="#desc">Description</a>
+        </li>
+        <li>
+          <a href="#prerequisites">Prerequisites/Assumptions</a>
+        </li>
+        <li>
+          <a href="#tutorial">Tutorial</a>
+        </li>
+        <li>
+          <a href="#summary">Summary</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <hr />
+  <main>
+    <article id="source">
+      <h2>Source</h2>
+      <section>
+        <a href="https://learn.microsoft.com/en-us/azure/azure-sql/database/connect-query-ssms?view=azuresql">Source
+          tutorial</a>
+      </section>
+    </article>
+    <article id="desc">
+      <h2>Description</h2>
+      <section>
+        <p>Connect SSMS to Azure SQL Database.</p>
+      </section>
+    </article>
+    <article id="prerequisites">
+      <h2>Prerequisites/Assumptions</h2>
+      <section>
+        <ol>
+          <li class="list-point">
+            I have Azure free account set up.
+          </li>
+          <li class="list-point">
+            <a href="./azure-sql-db.html">Azure SQL Database</a>
+            done before this one.
+          </li>
+          <li class="list-point">
+            <a
+              href="https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16">SSMS</a>.
+          </li>
+        </ol>
+      </section>
+    </article>
+    <article id="tutorial">
+      <h2>Tutorial</h2>
+      <section>
+        <ol>
+          <li>
+            <p>
+              Get db name from azure portal Server name filed
+            </p>
+            <aside>
+              <details>
+                <summary>details</summary>
+                <p>
+                  <mark class="">example name from azure</mark>
+                </p>
+              </details>
+            </aside>
+            <p>
+              <button onclick="Copy('code1')">Copy</button>
+              <code id="code1">
+                                    atari-monk-az-sql-server.database.windows.net
+                                </code>
+              <br />
+            </p>
+          </li>
+          <li>
+            <p>Get server login (stored from create cmd)</p>
+            <aside>
+              <details>
+                <summary>details</summary>
+                <p>
+                  <mark class="">my login, used in tutorials</mark>
+                </p>
+              </details>
+            </aside>
+            <p>
+              <button onclick="Copy('code2')">Copy</button>
+              <code id="code2"> atari-monk-az </code>
+              <br />
+            </p>
+          </li>
+          <li>
+            <p>Get server password (stored from create cmd)</p>
+            <p></p>
+          </li>
+        </ol>
+      </section>
+    </article>
+    <article id="summary">
+      <h2>Summary</h2>
+      <summary>
+        I connected SSMS.<br />
+        I was unable to migrate my existing db there or to find easy
+        to use information on it.<br />
+      </summary>
+    </article>
+  </main>
+  <hr />
+  <footer>
+    <p>
+      &lt;&lt;&lt;
+      <a href="https://github.com/atari-monk">atari-monk</a>
+      &gt;&gt;&gt;
+    </p>
+    <p>
+      <a href="#">Back to Top</a>
+    </p>
+  </footer>
+</body>
+
+</html>

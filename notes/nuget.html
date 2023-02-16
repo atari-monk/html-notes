@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="atari-monk">
+  <meta name="description" content="Tutorial page of my tech wiki.">
+  <title>Tech Wiki Web Page</title>
+  <link rel="icon" href="../src/img/html5.png" type="image/x-icon">
+  <link rel="stylesheet" href="../src/css/main.css" type="text/css">
+  <script src="../src/js/tutorial.js"></script>
+</head>
+
+<body>
+  <header>
+    <h1 class="title">Nuget</h1>
+    <nav aria-label="primary-navigation">
+      <ul>
+        <li class="list-point">
+          <a href="#source">Source</a>
+        </li class="list-point">
+        <li class="list-point">
+          <a href="#desc">Description</a>
+        </li class="list-point">
+        <li class="list-point">
+          <a href="#prerequisites">Prerequisites/Assumptions</a>
+        </li class="list-point">
+        <li class="list-point">
+          <a href="#tutorial">Tutorial</a>
+        </li class="list-point">
+        <li class="list-point">
+          <a href="#summary">Summary</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <hr />
+  <main>
+    <article id="source">
+      <h2>Source</h2>
+      <section class="list-point">
+        <ol>
+          <li class="list-point">
+            <a
+              href="https://learn.microsoft.com/en-us/nuget/quickstart/create-and-publish-a-package-using-the-dotnet-cli">Source
+              tutorial</a>
+          </li>
+          <li class="list-point">
+            <a href="https://stackoverflow.com/questions/43400069/add-a-package-with-a-local-package-file-in-dotnet">Add
+              a package with a local package file in 'dotnet'</a>
+          </li>
+          <li class="list-point">
+            <a href="https://github.com/dasMulli/LocalNupkgExample">LocalNupkgExample</a>
+          </li>
+        </ol>
+      </section>
+    </article>
+    <article id="desc">
+      <h2>Description</h2>
+      <section>
+        <p>
+          I use many libs across my projects.<br>
+          They are build to Build folder.<br>
+          They are referenced in csproj files.<br>
+          Local nuget would remove explicit path from refs in csproj.<br>
+          Therefore this look into nugets.
+        </p>
+      </section>
+    </article>
+    <article id="prerequisites">
+      <h2>Prerequisites/Assumptions</h2>
+      <section>
+        <ol>
+          <li class="list-point"><a href="https://dotnet.microsoft.com/en-us/download">.NET SDK</a></li>
+          <li class="list-point"><a
+              href="https://learn.microsoft.com/en-us/nuget/nuget-org/individual-accounts#add-a-new-individual-account">nuget.org
+              free account</a></li>
+        </ol>
+      </section>
+    </article>
+    <article id="tutorial">
+      <h2>Tutorial</h2>
+      <section>
+        <ol>
+          <li>
+            <p>
+              Create new github repo
+            </p>
+            <p>
+            </p>
+          </li>
+          <li>
+            <p>
+              Open folder with VSCode
+            </p>
+            <p>
+            </p>
+          </li>
+          <li>
+            <p>
+              Setup project.
+            </p>
+            <p>
+              <button onclick="Copy('code1')">Copy</button>
+              <code id='code1'>
+                                    dotnet new sln
+                                </code>
+              <br>
+              <button onclick="Copy('code2')">Copy</button>
+              <code id='code2'>
+                                    dotnet new classlib -n Connection.Builder
+                                </code>
+              <br>
+              <button onclick="Copy('code3')">Copy</button>
+              <code id='code3'>
+                                    dotnet sln add ./Connection.Builder/
+                                </code>
+              <br>
+            </p>
+          </li>
+          <li>
+            <p>
+              In csproj file set properties describing nuget
+            </p>
+            <aside>
+              <details>
+                <summary>details</summary>
+                <p><mark class="mark-name">Id name, unique in nuget.org</mark></p>
+                <p><mark class="mark-name">version</mark></p>
+                <p><mark class="mark-name">author</mark></p>
+                <p><mark class="mark-name">company name</mark></p>
+                <p><mark class="mark-name">tags important for searching nuget</mark></p>
+                <p><mark class="mark-name">description</mark></p>
+              </details>
+            </aside>
+            <p>
+              <button onclick="Copy('code4')">Copy</button>
+              <code id='code4'>
+                                    &lt;PackageId&gt;<mark class="mark-name">Connection.Builder.15.11.2022.001.Test</mark>&lt;/PackageId&gt;&lt;br&gt;&lt;Version&gt;<mark class="mark-name">1.0.0</mark>&lt;/Version&gt;&lt;br&gt;&lt;Authors&gt;<mark class="mark-name">atari-monk</mark>&lt;/Authors&gt;&lt;br&gt;&lt;Company&gt;<mark class="mark-name"></mark>&lt;/Company&gt;&lt;br&gt;&lt;PackageTags&gt;<mark class="mark-name">tag1;tag2</mark>&lt;/PackageTags&gt;&lt;br&gt;&lt;Description&gt;<mark class="mark-name">Builds ConnectionString.</mark>&lt;/Description&gt;
+                                </code>
+              <br>
+            </p>
+          </li>
+          <li>
+            <p>
+              Build
+            </p>
+            <p>
+              <button onclick="Copy('code5')">Copy</button>
+              <code id='code5'>
+                                    dotnet build
+                                </code>
+              <br>
+            </p>
+          </li>
+          <li>
+            <p>
+              Produce nuget file with dotnet cli.
+            </p>
+            <aside>
+              <details>
+                <summary>details</summary>
+                <p><mark class="">cd folder with csproj file</mark></p>
+                <p><mark class="">clear your local packages cache (try to use below, this one takes ages to restore
+                    after)</mark></p>
+                <p><mark class="">clear your local packages cache</mark></p>
+                <p><mark class="mark-name">build path</mark></p>
+              </details>
+            </aside>
+            <p>
+              <button onclick="Copy('code6')">Copy</button>
+              <code id='code6'>
+                                    cd C:\atari-monk\Code\connection-builder\Connection.Builder
+                                </code>
+              <br>
+              <button onclick="Copy('code7')">Copy</button>
+              <code id='code7'>
+                                    dotnet nuget locals all --clear
+                                </code>
+              <br>
+              <button onclick="Copy('code8')">Copy</button>
+              <code id='code8'>
+                                    dotnet nuget locals temp -c
+                                </code>
+              <br>
+              <button onclick="Copy('code9')">Copy</button>
+              <code id='code9'>
+                                    dotnet nuget locals global-packages -c
+                                </code>
+              <br>
+              <button onclick="Copy('code10')">Copy</button>
+              <code id='code10'>
+                                    dotnet restore
+                                </code>
+              <br>
+              <button onclick="Copy('code11')">Copy</button>
+              <code id='code11'>
+                                    dotnet pack -c Release -o <mark class="mark-name">C:\atari-monk\Build\nugets</mark>
+                                </code>
+              <br>
+            </p>
+          </li>
+          <li>
+            <p>
+              In target csproj file, add local nuget source. (also nuget.org)
+            </p>
+            <p>
+              <button onclick="Copy('code12')">Copy</button>
+              <code id='code12'>
+                                    &lt;RestoreSources&gt;$(RestoreSources);C:\atari-monk\Build\nugets;https://api.nuget.org/v3/index.json&lt;/RestoreSources&gt;
+                                </code>
+              <br>
+            </p>
+          </li>
+          <li>
+            <p>
+              Consume nuget in target project.
+            </p>
+            <aside>
+              <details>
+                <summary>details</summary>
+                <p><mark class="mark-name">PackageId</mark></p>
+              </details>
+            </aside>
+            <p>
+              <button onclick="Copy('code13')">Copy</button>
+              <code id='code13'>
+                                    cd C:\atari-monk\Code\repo\proj
+                                </code>
+              <br>
+              <button onclick="Copy('code14')">Copy</button>
+              <code id='code14'>
+                                    dotnet add package <mark class="mark-name">Connection.Builder.19.11.2022</mark>
+                                </code>
+              <br>
+              <button onclick="Copy('code15')">Copy</button>
+              <code id='code15'>
+                                    dotnet restore
+                                </code>
+              <br>
+            </p>
+          </li>
+        </ol>
+      </section>
+    </article>
+    <article id="summary">
+      <h2>Summary</h2>
+      <summary>
+        Local nuget proved to be handy.
+      </summary>
+    </article>
+  </main>
+  <hr />
+  <footer>
+    <p>
+      &lt;&lt;&lt;
+      <a href="https://github.com/atari-monk">atari-monk</a>
+      &gt;&gt;&gt;
+    </p>
+    <p>
+      <a href="#">Back to Top</a>
+    </p>
+  </footer>
+</body>
+
+</html>

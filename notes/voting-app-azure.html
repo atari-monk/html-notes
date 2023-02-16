@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="atari-monk">
+  <meta name="description" content="Tutorial page of my tech wiki.">
+  <title>Tech Wiki Web Page</title>
+  <link rel="icon" href="../src/img/html5.png" type="image/x-icon">
+  <link rel="stylesheet" href="../src/css/main.css" type="text/css">
+  <script src="../src/js/tutorial.js"></script>
+</head>
+
+<body>
+  <header>
+    <h1 class="title">Deploy VotingApp</h1>
+
+    <nav aria-label="primary-navigation">
+      <ul>
+        <li>
+          <a href="#source">Source</a>
+        </li>
+        <li>
+          <a href="#desc">Description</a>
+        </li>
+        <li>
+          <a href="#prerequisites">Prerequisites/Assumptions</a>
+        </li>
+        <li>
+          <a href="#tutorial">Tutorial</a>
+        </li>
+        <li>
+          <a href="#summary">Summary</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <hr />
+  <main>
+    <article id="source">
+      <h2>Source</h2>
+      <section>
+        <a href="https://learn.microsoft.com/en-us/azure/container-instances/tutorial-docker-compose">Source
+          tutorial</a>
+      </section>
+    </article>
+    <article id="desc">
+      <h2>Description</h2>
+      <section>
+        <p>
+          Deploy two container app with Docker Compose on Azure.
+        </p>
+      </section>
+    </article>
+    <article id="prerequisites">
+      <h2>Prerequisites/Assumptions</h2>
+      <section>
+        <ol>
+          <li>I have Azure free account set up.</li>
+          <li>Using a local installation of Azure CLI.</li>
+        </ol>
+      </section>
+    </article>
+    <article id="tutorial">
+      <h2>Tutorial</h2>
+      <section>
+        <ol>
+          <li>
+            <p>Create resource group</p>
+            <aside>
+              <details>
+                <summary>details</summary>
+                <p>
+                  <mark class="mark-rg">Choose your Resource Group
+                    name</mark>
+                </p>
+                <p>
+                  <mark class="mark-location">Choose your Location name</mark>
+                </p>
+              </details>
+            </aside>
+            <p>
+              <button onclick="Copy('code1')">Copy</button>
+              <code id="code1">
+                                    az group create --name
+                                    <mark class="mark-rg"
+                                        >common-resource-group</mark
+                                    >
+                                    --location
+                                    <mark class="mark-location"
+                                        >swedencentral</mark
+                                    >
+                                </code>
+              <br />
+            </p>
+          </li>
+          <li>
+            <p>Create azure container registry</p>
+            <aside>
+              <details>
+                <summary>details</summary>
+                <p>
+                  <mark class="mark-rg">Choose your Resource Group
+                    name</mark>
+                </p>
+                <p>
+                  <mark class="mark-acr">Choose your Azure Container
+                    Registry name</mark>
+                </p>
+              </details>
+            </aside>
+            <p>
+              <button onclick="Copy('code2')">Copy</button>
+              <code id="code2">
+                                    az acr create --resource-group
+                                    <mark class="mark-rg"
+                                        >common-resource-group</mark
+                                    >
+                                    --name
+                                    <mark class="mark-acr">atari-monk-acr</mark>
+                                    --sku Basic
+                                </code>
+              <br />
+            </p>
+          </li>
+          <li>
+            <p>Login to your azure container registry</p>
+            <aside>
+              <details>
+                <summary>details</summary>
+                <p>
+                  <mark class="mark-acr">Choose your Azure Container
+                    Registry name</mark>
+                </p>
+              </details>
+            </aside>
+            <p>
+              <button onclick="Copy('code3')">Copy</button>
+              <code id="code3">
+                                    az acr login --name
+                                    <mark class="mark-acr">atari-monk-acr</mark>
+                                </code>
+              <br />
+            </p>
+          </li>
+          <li>
+            <p>Get code of example app</p>
+            <p>
+              <button onclick="Copy('code4')">Copy</button>
+              <code id="code4"> cd C:\atarimonk\Code </code>
+              <br />
+              <button onclick="Copy('code5')">Copy</button>
+              <code id="code5">
+                                    git clone
+                                    https://github.com/Azure-Samples/azure-voting-app-redis.git
+                                </code>
+              <br />
+              <button onclick="Copy('code6')">Copy</button>
+              <code id="code6">
+                                    cd azure-voting-app-redis
+                                </code>
+              <br />
+            </p>
+          </li>
+          <li>
+            <p>Modiffy docker compose file</p>
+            <p>
+              <button onclick="Copy('code7')">Copy</button>
+              <code id="code7">
+                                    front ports to "80:80", image to image:
+                                    atarimonkacr.azurecr.io/azure-vote-front:v1
+                                </code>
+              <br />
+            </p>
+          </li>
+          <li>
+            <p>Run locally</p>
+            <p>
+              <button onclick="Copy('code8')">Copy</button>
+              <code id="code8">
+                                    docker-compose up --build -d
+                                </code>
+              <br />
+              <button onclick="Copy('code9')">Copy</button>
+              <code id="code9"> docker images </code>
+              <br />
+              <button onclick="Copy('code10')">Copy</button>
+              <code id="code10"> docker ps </code>
+              <br />
+            </p>
+          </li>
+          <li>
+            <p>Test url in browser</p>
+            <p>
+              <button onclick="Copy('code11')">Copy</button>
+              <code id="code11"> http://localhost:80 </code>
+              <br />
+            </p>
+          </li>
+          <li>
+            <p>Run down locall instances</p>
+            <p>
+              <button onclick="Copy('code12')">Copy</button>
+              <code id="code12"> docker-compose down </code>
+              <br />
+            </p>
+          </li>
+          <li>
+            <p>Push image to container registry</p>
+            <p>
+              <button onclick="Copy('code13')">Copy</button>
+              <code id="code13"> docker-compose push </code>
+              <br />
+            </p>
+          </li>
+          <li>
+            <p>Verify if image is in repository</p>
+            <aside>
+              <details>
+                <summary>details</summary>
+                <p>
+                  <mark class="mark-acr">Choose your Azure Container
+                    Registry name</mark>
+                </p>
+                <p>
+                  <mark class="mark-repo">Choose your Repository name</mark>
+                </p>
+              </details>
+            </aside>
+            <p>
+              <button onclick="Copy('code14')">Copy</button>
+              <code id="code14">
+                                    az acr repository show --name
+                                    <mark class="mark-acr">atari-monk-acr</mark>
+                                    --repository
+                                    <mark class="mark-repo"
+                                        >azure-vote-front</mark
+                                    >
+                                </code>
+              <br />
+            </p>
+          </li>
+          <li>
+            <p>Login to Azure to use docker commands</p>
+            <p>
+              <button onclick="Copy('code15')">Copy</button>
+              <code id="code15"> docker login azure </code>
+              <br />
+            </p>
+          </li>
+          <li>
+            <p>Add your acr context</p>
+            <aside>
+              <details>
+                <summary>details</summary>
+                <p>
+                  <mark class="mark-acr-context">Choose your Azure Container
+                    Registry Context name</mark>
+                </p>
+              </details>
+            </aside>
+            <p>
+              <button onclick="Copy('code15')">Copy</button>
+              <code id="code15">
+                                    docker context create aci
+                                    <mark class="mark-acr-context"
+                                        >atari-monk-acr-context</mark
+                                    >
+                                </code>
+              <br />
+            </p>
+          </li>
+          <li>
+            <p>Verify you added</p>
+            <p>
+              <button onclick="Copy('code16')">Copy</button>
+              <code id="code16"> docker context ls </code>
+              <br />
+            </p>
+          </li>
+          <li>
+            <p>Set context</p>
+            <aside>
+              <details>
+                <summary>details</summary>
+                <p>
+                  <mark class="mark-acr-context">Choose your Azure Container
+                    Registry Context name</mark>
+                </p>
+              </details>
+            </aside>
+            <p>
+              <button onclick="Copy('code17')">Copy</button>
+              <code id="code17">
+                                    docker context use
+                                    <mark class="mark-acr-context"
+                                        >atari-monk-acr-context</mark
+                                    >
+                                </code>
+              <br />
+            </p>
+          </li>
+          <li>
+            <p>Start app in azure container instances</p>
+            <p>
+              <button onclick="Copy('code18')">Copy</button>
+              <code id="code18"> docker compose up </code>
+              <br />
+            </p>
+          </li>
+          <li>
+            <p>Get app ip</p>
+            <p>
+              <button onclick="Copy('code19')">Copy</button>
+              <code id="code19"> docker ps </code>
+              <br />
+            </p>
+          </li>
+          <li>
+            <p>Test ip in browser</p>
+            <p></p>
+          </li>
+          <li>
+            <p>To see logs</p>
+            <p>
+              <button onclick="Copy('code20')">Copy</button>
+              <code id="code20">
+                                    docker logs
+                                    azurevotingappredis_azure-vote-front (other
+                                    cmds, fix)
+                                </code>
+              <br />
+            </p>
+          </li>
+          <li>
+            <p>To stop and delete containers</p>
+            <p>
+              <button onclick="Copy('code21')">Copy</button>
+              <code id="code21"> docker compose down </code>
+              <br />
+            </p>
+          </li>
+        </ol>
+      </section>
+    </article>
+    <article id="summary">
+      <h2>Summary</h2>
+      <summary>
+        My first tutorial on containers from learn.microsoft.com.<br />
+        Dont know apps tech.<br />
+        It worked but is kind of useless to me.<br />
+        I tried to use this steps for Command api repo and db.<br />
+        I think it failed becouse sql server container didnt have
+        2Gb memory, witch is min requirement.
+      </summary>
+    </article>
+  </main>
+  <hr />
+  <footer>
+    <p>
+      &lt;&lt;&lt;
+      <a href="https://github.com/atari-monk">atari-monk</a>
+      &gt;&gt;&gt;
+    </p>
+    <p>
+      <a href="#">Back to Top</a>
+    </p>
+  </footer>
+</body>
+
+</html>

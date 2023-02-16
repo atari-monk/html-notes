@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="atari-monk">
+  <meta name="description" content="Tutorial page of my tech wiki.">
+  <title>Tech Wiki Web Page</title>
+  <link rel="icon" href="../src/img/html5.png" type="image/x-icon">
+  <link rel="stylesheet" href="../src/css/main.css" type="text/css">
+  <script src="../src/js/tutorial.js"></script>
+</head>
+
+<body>
+  <header>
+    <h1 class="title">Azure SQL Database</h1>
+    <nav aria-label="primary-navigation">
+      <ul>
+        <li class="list-point">
+          <a href="#source">Source</a>
+        </li>
+        <li class="list-point">
+          <a href="#desc">Description</a>
+        </li>
+        <li class="list-point">
+          <a href="#prerequisites">Prerequisites/Assumptions</a>
+        </li>
+        <li class="list-point">
+          <a href="#tutorial">Tutorial</a>
+        </li>
+        <li class="list-point">
+          <a href="#summary">Summary</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <hr />
+  <main>
+    <article id="source">
+      <h2>Source</h2>
+      <section>
+        <a
+          href="https://learn.microsoft.com/en-us/azure/azure-sql/database/single-database-create-quickstart?view=azuresql&tabs=azure-cli">Source
+          tutorial</a>
+      </section>
+    </article>
+    <article id="desc">
+      <h2>Description</h2>
+      <section>
+        <p>
+          Create a single database - Azure SQL Database.
+        </p>
+      </section>
+    </article>
+    <article id="prerequisites">
+      <h2>Prerequisites/Assumptions</h2>
+      <section>
+        <ol>
+          <li>
+            I have Azure free account set up.
+          </li>
+          <li>
+            Using a local installation of Azure CLI.
+          </li>
+        </ol>
+      </section>
+    </article>
+    <article id="tutorial">
+      <h2>Tutorial</h2>
+      <section>
+        <ol>
+          <li>
+            <p>
+              Run PowerShell in chosen root folder.
+            </p>
+            <p>
+            </p>
+          </li>
+          <li>
+            <p>
+              Check Azure CLI version. <a
+                href="https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-windows?tabs=azure-cli">Azure
+                CLI current msi</a>
+            </p>
+            <p>
+              <button onclick="Copy('code1')">Copy</button>
+              <code id='code1'>
+                                az version
+                            </code>
+              <br>
+            </p>
+          </li>
+          <li>
+            <p>
+              Update Azure CLI. (if needed)
+            </p>
+            <p>
+              <button onclick="Copy('code2')">Copy</button>
+              <code id='code2'>
+                                az upgrade
+                            </code>
+              <br>
+            </p>
+          </li>
+          <li>
+            <p>
+              During Azure CLI MSI install, phyton needed to be killed. (if needed)
+            </p>
+            <p>
+              <button onclick="Copy('code3')">Copy</button>
+              <code id='code3'>
+                                taskkill /im python.exe /F
+                            </code>
+              <br>
+            </p>
+          </li>
+          <li>
+            <p>
+              Sign in to the Azure CLI.
+            </p>
+            <p>
+              <button onclick="Copy('code4')">Copy</button>
+              <code id='code4'>
+                                az login
+                            </code>
+              <br>
+            </p>
+          </li>
+          <li>
+            <p>
+              Create resource group for this project.
+            </p>
+            <aside>
+              <details>
+                <summary>details</summary>
+                <p><mark class="mark-rg">resource group</mark></p>
+                <p><mark class="mark-location">location</mark></p>
+                <p><mark class="mark-tag">description tag</mark></p>
+              </details>
+            </aside>
+            <p>
+              <button onclick="Copy('code5')">Copy</button>
+              <code id='code5'>
+                                az group create --name <mark class="mark-rg">az-sql-db1-rg</mark> --location <mark class="mark-location">swedencentral</mark> --tags <mark class="mark-tag">create-and-configure-database</mark>
+                            </code>
+              <br>
+            </p>
+          </li>
+          <li>
+            <p>
+              Create a server.
+            </p>
+            <aside>
+              <details>
+                <summary>details</summary>
+                <p><mark class="mark-name">server name (unique in azure)</mark></p>
+                <p><mark class="mark-rg">resource group</mark></p>
+                <p><mark class="mark-location">location</mark></p>
+                <p><mark class="mark-login">server login</mark></p>
+                <p><mark class="mark-password">server password</mark></p>
+              </details>
+            </aside>
+            <p>
+              <button onclick="Copy('code6')">Copy</button>
+              <code id='code6'>
+                                az sql server create --name <mark class="mark-name">atari-monk-sql-server1</mark> --resource-group <mark class="mark-rg">az-sql-db1-rg</mark> --location <mark class="mark-location">swedencentral</mark> --admin-user <mark class="mark-login">atari-monk</mark> --admin-password <mark class="mark-password">password</mark>
+                            </code>
+              <br>
+            </p>
+          </li>
+          <li>
+            <p>
+              Configure a server-based firewall rule.
+            </p>
+            <aside>
+              <details>
+                <summary>details</summary>
+                <p><mark class="mark-rg">resource group</mark></p>
+                <p><mark class="mark-name">server name</mark></p>
+                <p><mark class="mark-ip">public ip of your admin pc</mark></p>
+                <p><mark class="mark-ip">public ip of your admin pc</mark></p>
+              </details>
+            </aside>
+            <p>
+              <button onclick="Copy('code7')">Copy</button>
+              <code id='code7'>
+                                az sql server firewall-rule create --resource-group <mark class="mark-rg">az-sql-db1-rg</mark> --server <mark class="mark-name">atari-monk-sql-server1</mark> -n AllowYourIp --start-ip-address <mark class="mark-ip">ip</mark> --end-ip-address <mark class="mark-ip">ip</mark>
+                            </code>
+              <br>
+            </p>
+          </li>
+          <li>
+            <p>
+              Deleting resources, server and dbs, after they are not needed.
+            </p>
+            <aside>
+              <details>
+                <summary>details</summary>
+                <p><mark class="mark-rg">resource group</mark></p>
+              </details>
+            </aside>
+            <p>
+              <button onclick="Copy('code8')">Copy</button>
+              <code id='code8'>
+                                az group delete --name <mark class="mark-rg">az-sql-db1-rg</mark>
+                            </code>
+              <br>
+            </p>
+          </li>
+        </ol>
+      </section>
+    </article>
+    <article id="summary">
+      <h2>Summary</h2>
+      <Summary>
+        &emsp;After reading that containers are stateless by design<br>
+        and production db in them is not a good idea, i needed azure db create tutorial like this one.<br>
+        &emsp;Maybe it would be convinent to run Azure CLI locally on docker container?
+        <a href="https://learn.microsoft.com/en-us/cli/azure/run-azure-cli-docker">Azure CLI with docker</a><br>
+        &emsp;Btw!, free, is as allways, the commercial to lure people.<br>
+        After 2 weeks, on login, i was forced to pay as you go, with some free margins on services.<br>
+        Gots to monitor these litmits hard.<br>
+        &emsp;Server in resource group with firewall rule was created.<br>
+        Next step was to <a href="">connect SSMS to Azure SQL db</a>.
+      </Summary>
+    </article>
+  </main>
+  <hr />
+  <footer>
+    <p>
+      &lt;&lt;&lt; <a href="https://github.com/atari-monk">atari-monk</a> &gt;&gt;&gt;
+    </p>
+    <p>
+      <a href="#">Back to Top</a>
+    </p>
+  </footer>
+</body>
+
+</html>

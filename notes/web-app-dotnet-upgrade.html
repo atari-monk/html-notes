@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="atari-monk">
+  <meta name="description" content="Tutorial page of my tech wiki.">
+  <title>Tech Wiki Web Page</title>
+  <link rel="icon" href="../src/img/html5.png" type="image/x-icon">
+  <link rel="stylesheet" href="../src/css/main.css" type="text/css">
+  <script src="../src/js/tutorial.js"></script>
+</head>
+
+<body>
+  <header>
+    <h1 class="title">Web app dotnet version upgrade</h1>
+    <nav aria-label="primary-navigation">
+      <ul>
+        <li class="list-point">
+          <a href="#source">Source</a>
+        </li class="list-point">
+        <li class="list-point">
+          <a href="#desc">Description</a>
+        </li class="list-point">
+        <li class="list-point">
+          <a href="#prerequisites">Prerequisites/Assumptions</a>
+        </li class="list-point">
+        <li class="list-point">
+          <a href="#tutorial">Tutorial</a>
+        </li class="list-point">
+        <li class="list-point">
+          <a href="#summary">Summary</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <hr />
+  <main>
+    <article id="source">
+      <h2>Source</h2>
+      <section class="list-point">
+        <ol>
+          <li class="list-point">
+            <a href=""></a>
+          </li>
+        </ol>
+      </section>
+    </article>
+    <article id="desc">
+      <h2>Description</h2>
+      <section>
+        <p>
+          ToDo web app example from microsoft open source on github was used to train azure deployment.<br>
+          Before deploy i make upgrade from .net6 to .net7.<br>
+          Below are some notes to record some steps to have a grasp what this proccess can entail.
+        </p>
+      </section>
+    </article>
+    <article id="prerequisites">
+      <h2>Prerequisites/Assumptions</h2>
+      <section>
+        <ol>
+          <li class="list-point"></li>
+        </ol>
+      </section>
+    </article>
+    <article id="tutorial">
+      <h2>Tutorial</h2>
+      <section>
+        <ol>
+          <li>
+            <p>
+              Open Code powershell (shell set on folder Code)
+            </p>
+            <p>
+            </p>
+          </li>
+          <li>
+            <p>
+              Clone example repo. This web app is net6. Updgrade to net7
+            </p>
+            <p>
+              <button onclick="Copy('code1')">Copy</button>
+              <code id='code1'>
+                                    git clone https://github.com/Azure-Samples/msdocs-app-service-sqldb-dotnetcore.git
+                                </code>
+              <br>
+              <button onclick="Copy('code2')">Copy</button>
+              <code id='code2'>
+                                    cd msdocs-app-service-sqldb-dotnetcore
+                                </code>
+              <br>
+            </p>
+          </li>
+          <li>
+            <p>
+              Create new repo on github. Named todo-web-app. Clone it.
+            </p>
+            <p>
+            </p>
+          </li>
+          <li>
+            <p>
+              Check dotnet version. Install dotnet 7.0. <a
+                href="https://dotnet.microsoft.com/en-us/download/dotnet/7.0">Dotnet 7 download page</a>
+            </p>
+            <p>
+              <button onclick="Copy('code3')">Copy</button>
+              <code id='code3'>
+                                    dotnet --version
+                                </code>
+              <br>
+            </p>
+          </li>
+          <li>
+            <p>
+              Create net7, new mvc web app in VSCode. Test run it. Commit it.
+            </p>
+            <p>
+              <button onclick="Copy('code4')">Copy</button>
+              <code id='code4'>
+                                    dotnet new mvc -n todo-web-app
+                                </code>
+              <br>
+            </p>
+          </li>
+          <li>
+            <p>
+              Copy files of example app. Change namespace. Refactor names.
+            </p>
+            <p>
+            </p>
+          </li>
+          <li>
+            <p>
+              Copy Todo model file.
+            </p>
+            <p>
+            </p>
+          </li>
+          <li>
+            <p>
+              To raname project change folder and csproj name also change RootNamespace is csproj.
+            </p>
+            <p>
+            </p>
+          </li>
+          <li>
+            <p>
+              Add sln file.
+            </p>
+            <p>
+              <button onclick="Copy('code5')">Copy</button>
+              <code id='code5'>
+                                    dotnet new sln
+                                </code>
+              <br>
+            </p>
+          </li>
+          <li>
+            <p>
+              Add proj to sln.
+            </p>
+            <p>
+              <button onclick="Copy('code6')">Copy</button>
+              <code id='code6'>
+                                    dotnet sln add .\TodoWebApp\
+                                </code>
+              <br>
+            </p>
+          </li>
+          <li>
+            <p>
+              Copy dbContext file and add Microsoft.EntityFrameworkCore.SqlServer PackageReference to csproj.
+            </p>
+            <p>
+            </p>
+          </li>
+          <li>
+            <p>
+              Add contorller. Handle null warnings. (even temporary fix)
+            </p>
+            <p>
+            </p>
+          </li>
+          <li>
+            <p>
+              Map to new contorller as default in program.cs app.MapControllerRoute...
+            </p>
+            <p>
+            </p>
+          </li>
+          <li>
+            <p>
+              Copy views folder. Rename namespaces. Commit.
+            </p>
+            <p>
+            </p>
+          </li>
+          <li>
+            <p>
+              Add ConnectionString named LocalDbConnection to appsettings.json. <a
+                href="https://learn.microsoft.com/en-us/ef/core/miscellaneous/connection-strings">Connection Strings</a>
+            </p>
+            <p>
+            </p>
+          </li>
+          <li>
+            <p>
+              Add ef core dbContext to program.cs web app setup. builder.Services.AddDbContext...
+            </p>
+            <p>
+            </p>
+          </li>
+          <li>
+            <p>
+              From a local terminal applay migrations. To create local db for tests. <a
+                href="https://www.nuget.org/">nuget</a>.
+            </p>
+            <aside>
+              <details>
+                <summary>details</summary>
+                <p><mark class="">you need to be in project with migrations folder</mark></p>
+                <p><mark class="">if needed</mark></p>
+                <p><mark class="">if needed</mark></p>
+                <p><mark class="">if needed, dont use version for latest</mark></p>
+                <p><mark class="">if needed</mark></p>
+                <p><mark class="">run migrations on db</mark></p>
+              </details>
+            </aside>
+            <p>
+              <button onclick="Copy('code7')">Copy</button>
+              <code id='code7'>
+                                    cd TodoWebApp
+                                </code>
+              <br>
+              <button onclick="Copy('code8')">Copy</button>
+              <code id='code8'>
+                                    dotnet tool install -g dotnet-ef
+                                </code>
+              <br>
+              <button onclick="Copy('code9')">Copy</button>
+              <code id='code9'>
+                                    dotnet tool update -g dotnet-ef
+                                </code>
+              <br>
+              <button onclick="Copy('code10')">Copy</button>
+              <code id='code10'>
+                                    dotnet add package Microsoft.EntityFrameworkCore.Design --version 7.0.0
+                                </code>
+              <br>
+              <button onclick="Copy('code11')">Copy</button>
+              <code id='code11'>
+                                    dotnet ef migrations add InitialCreate
+                                </code>
+              <br>
+              <button onclick="Copy('code12')">Copy</button>
+              <code id='code12'>
+                                    dotnet ef database update
+                                </code>
+              <br>
+            </p>
+          </li>
+          <li>
+            <p>
+              Mismach in ef core nugets versions, for example Microsoft.EntityFrameworkCore.SqlServer and
+              Microsoft.EntityFrameworkCore.Design<br>can give exceptions due to misiing implementations.
+              Version="7.0.0", Version="6.0.0", did.
+            </p>
+            <p>
+            </p>
+          </li>
+          <li>
+            <p>
+              .vscode json contain scripts to lunch app. If app was renamed. You need to edit theese files.
+            </p>
+            <p>
+            </p>
+          </li>
+          <li>
+            <p>
+              Test web app localy with the browser in debug mode.
+            </p>
+            <p>
+            </p>
+          </li>
+          <li>
+            <p>
+              Add azure diagnostics logging nuget. Add builder.Logging.AddAzureWebAppDiagnostics(); in program.cs.
+              Build. Commit.
+            </p>
+            <aside>
+              <details>
+                <summary>details</summary>
+                <p><mark class="">dont use version for latest</mark></p>
+              </details>
+            </aside>
+            <p>
+              <button onclick="Copy('code13')">Copy</button>
+              <code id='code13'>
+                                    dotnet add package Microsoft.Extensions.Logging.AzureAppServices --version 7.0.0
+                                </code>
+              <br>
+            </p>
+          </li>
+        </ol>
+      </section>
+    </article>
+    <article id="summary">
+      <h2>Summary</h2>
+      <summary>
+        Upgrade was not difficult, but it takes some actions and some time.
+      </summary>
+    </article>
+  </main>
+  <hr />
+  <footer>
+    <p>
+      &lt;&lt;&lt;
+      <a href="https://github.com/atari-monk">atari-monk</a>
+      &gt;&gt;&gt;
+    </p>
+    <p>
+      <a href="#">Back to Top</a>
+    </p>
+  </footer>
+</body>
+
+</html>

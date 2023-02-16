@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="atari-monk">
+  <meta name="description" content="Tutorial page of my tech wiki.">
+  <title>Tech Wiki Web Page</title>
+  <link rel="icon" href="../src/img/html5.png" type="image/x-icon">
+  <link rel="stylesheet" href="../src/css/main.css" type="text/css">
+  <script src="../src/js/tutorial.js"></script>
+</head>
+
+<body>
+  <header>
+    <h1 class="title">Pong Dev Notes</h1>
+    <nav aria-label="primary-navigation">
+      <ul>
+        <li class="list-point">
+          <a href="#source">Source</a>
+        </li class="list-point">
+        <li class="list-point">
+          <a href="#desc">Description</a>
+        </li class="list-point">
+        <li class="list-point">
+          <a href="#prerequisites">Prerequisites/Assumptions</a>
+        </li class="list-point">
+        <li class="list-point">
+          <a href="#tutorial">Tutorial</a>
+        </li class="list-point">
+        <li class="list-point">
+          <a href="#summary">Summary</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <hr />
+  <main>
+    <article id="source">
+      <h2>Source</h2>
+      <section class="list-point">
+        <ol>
+          <li class="list-point">
+            <a href="https://github.com/atari-monk/javascript-game-prototype">GitHub Repository For Pong Project.</a>
+          </li>
+        </ol>
+      </section>
+    </article>
+    <article id="desc">
+      <h2>Description</h2>
+      <section>
+        <p>
+          Clone of Pong written to 'exercise' JavaScript and have some Fun.
+        </p>
+      </section>
+    </article>
+    <article id="prerequisites">
+      <h2>Prerequisites/Assumptions</h2>
+      <section>
+        <ol>
+          <li class="list-point"><a href="./javascript-beginner-game.html">Done this Tutorial beforehand.</a></li>
+        </ol>
+      </section>
+    </article>
+    <article id="tutorial">
+      <h2>Notes</h2>
+      <section>
+        <ol>
+          <li>
+            <p>
+              Coding Session 10.12.2022.<br>Return after weeks.<br>Fixin stuff after introduction of second canvas for
+              text.
+            </p>
+            <p>
+              <button onclick="Copy('code1')">Copy</button>
+              <code id='code1'>
+            Bugs in main Game (bad name SecondPlayer).<br>Wrong canvas id.<br>Move score to text Canvas.<br>Text canvas didnt clean old paint.<br>Move player scores to player sides (left, right) and change color to match player.
+        </code>
+              <br>
+              <button onclick="Copy('code2')">Copy</button>
+              <code id='code2'>
+            In Wall Collision Test.<br>Add text canvas to Game ctor. A mistake. Removed.
+        </code>
+              <br>
+              <button onclick="Copy('code3')">Copy</button>
+              <code id='code3'>
+            In Player Test. Separation of Game, GameInfo and their factories.<br>Later this turned out to be not needed, a mistake.
+        </code>
+              <br>
+            </p>
+          </li>
+          <li>
+            <p>
+              Coding Session 11.12.2022.<br>Fixin stuff after introduction of second canvas for text.
+            </p>
+            <p>
+              <button onclick="Copy('code4')">Copy</button>
+              <code id='code4'>
+            Remove text canvas from Game class.
+        </code>
+              <br>
+              <button onclick="Copy('code5')">Copy</button>
+              <code id='code5'>
+            In Collision Left Test.<br>Separete class CollisionLeftTestInfoFactory.<br>Probably not needed mistake.
+        </code>
+              <br>
+              <button onclick="Copy('code6')">Copy</button>
+              <code id='code6'>
+            In Wall Collision Test.<br>Fix Game ctor.
+        </code>
+              <br>
+              <button onclick="Copy('code7')">Copy</button>
+              <code id='code7'>
+            In Player Test.<br>Fix Game ctor.<br>Move text to text canvas.<br>Update PlayerPrinter by moving description method to player class.<br>Facepalm, all printer classes are prolly to be removed as useless becouse these where game classes methods to begin with.
+        </code>
+              <br>
+              <button onclick="Copy('code8')">Copy</button>
+              <code id='code8'>
+            In Wall Collision Test.<br>Create Ball description method in ball instead in BallPrinter.<br>Seperate layer for this was a mistake at this point.
+        </code>
+              <br>
+            </p>
+          </li>
+        </ol>
+      </section>
+    </article>
+    <article id="summary">
+      <h2>Summary</h2>
+      <summary>
+        It's Dev log.
+      </summary>
+    </article>
+  </main>
+  <hr />
+  <footer>
+    <p>
+      &lt;&lt;&lt;
+      <a href="https://github.com/atari-monk">atari-monk</a>
+      &gt;&gt;&gt;
+    </p>
+    <p>
+      <a href="#">Back to Top</a>
+    </p>
+  </footer>
+</body>
+
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="atari-monk">
+  <meta name="description" content="Tutorial page of my tech wiki.">
+  <title>Tech Wiki Web Page</title>
+  <link rel="icon" href="../src/img/html5.png" type="image/x-icon">
+  <link rel="stylesheet" href="../src/css/main.css" type="text/css">
+  <script src="../src/js/tutorial.js"></script>
+</head>
+
+<body>
+  <header>
+    <h1 class="title">Identity db as separate lib package.</h1>
+    <nav aria-label="primary-navigation">
+      <ul>
+        <li class="list-point">
+          <a href="#source">Source</a>
+        </li class="list-point">
+        <li class="list-point">
+          <a href="#desc">Description</a>
+        </li class="list-point">
+        <li class="list-point">
+          <a href="#prerequisites">Prerequisites/Assumptions</a>
+        </li class="list-point">
+        <li class="list-point">
+          <a href="#tutorial">Tutorial</a>
+        </li class="list-point">
+        <li class="list-point">
+          <a href="#summary">Summary</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <hr />
+  <main>
+    <article id="source">
+      <h2>Source</h2>
+      <section class="list-point">
+        <ol>
+          <li class="list-point">
+            <a
+              href="https://learn.microsoft.com/en-us/aspnet/core/security/authentication/identity?view=aspnetcore-7.0&tabs=netcore-cli">Source
+              tutorial</a>
+          </li>
+        </ol>
+      </section>
+    </article>
+    <article id="desc">
+      <h2>Description</h2>
+      <section>
+        <p>
+          Generated identity wab app.<br>
+          Cut db part and move it to separete lib.<br>
+          Identity ef core db will be in seperate solution.<br>
+          It will be consumed by web apps as nuget.<br>
+        </p>
+      </section>
+    </article>
+    <article id="prerequisites">
+      <h2>Prerequisites/Assumptions</h2>
+      <section>
+      </section>
+    </article>
+    <article id="tutorial">
+      <h2>Tutorial</h2>
+      <section>
+        <ol>
+          <li>
+            <p>
+              Setup project. New github repo coloned.
+            </p>
+            <aside>
+              <details>
+                <summary>details</summary>
+                <p><mark class="mark-name">lib name</mark></p>
+                <p><mark class="mark-name">proj</mark></p>
+              </details>
+            </aside>
+            <p>
+              <button onclick="Copy('code1')">Copy</button>
+              <code id='code1'>
+                                    dotnet new sln
+                                </code>
+              <br>
+              <button onclick="Copy('code2')">Copy</button>
+              <code id='code2'>
+                                    dotnet new classlib -n <mark class="mark-name">Identity.Db</mark>
+                                </code>
+              <br>
+              <button onclick="Copy('code3')">Copy</button>
+              <code id='code3'>
+                                    dotnet sln add <mark class="mark-name">./Identity.Db/</mark>
+                                </code>
+              <br>
+              <button onclick="Copy('code4')">Copy</button>
+              <code id='code4'>
+                                    dotnet build
+                                </code>
+              <br>
+            </p>
+          </li>
+          <li>
+            <p>
+              commit and push.
+            </p>
+            <p>
+            </p>
+          </li>
+          <li>
+            <p>
+              Scaffold Identity in ASP.NET Core projects.
+            </p>
+            <aside>
+              <details>
+                <summary>details</summary>
+                <p><mark class="">with LocalDb</mark></p>
+              </details>
+            </aside>
+            <p>
+              <button onclick="Copy('code5')">Copy</button>
+              <code id='code5'>
+                                    dotnet new webapp --auth Individual -uld -o Identity.WebApp
+                                </code>
+              <br>
+            </p>
+          </li>
+          <li>
+            <p>
+              Move data folder form web app to lib.
+            </p>
+            <p>
+            </p>
+          </li>
+          <li>
+            <p>
+              Add nugets to lib. Build.
+            </p>
+            <p>
+            </p>
+          </li>
+        </ol>
+      </section>
+    </article>
+    <article id="summary">
+      <h2>Summary</h2>
+      <summary>
+        ...i put this on hold, since benefit of it is negligable, if any. (separating db lib from web app)<br>
+        More generally on identity: this type of authentication would mean that each and every of my app has this code
+        in them,<br>
+        and separate db's for authentication.<br>
+        I would rather have one authentication app and rest would just refer to this.<br>
+        So plan is to deploy one and try use it to protect restricted content.<br>
+        Problem is, it would need to be existing solid solution.<br>
+        I dont know any, so i must stick with identity per app. It's the cheapest (in many ways) option for now.<br>
+        Another idea is to just deploy simpest identity web app and check if there is any way to use it in context of
+        other apps.
+      </summary>
+    </article>
+  </main>
+  <hr />
+  <footer>
+    <p>
+      &lt;&lt;&lt;
+      <a href="https://github.com/atari-monk">atari-monk</a>
+      &gt;&gt;&gt;
+    </p>
+    <p>
+      <a href="#">Back to Top</a>
+    </p>
+  </footer>
+</body>
+
+</html>
